@@ -1,6 +1,8 @@
 # encoding: utf-8
 from django.db import models
 
+def upload_dir_path(instance, filename):
+    return 'uploaded_files/%s/%s' % (instance.username, filename)
 
 class File(models.Model):
     """This is a small demo using just two fields. The slug field is really not
@@ -9,8 +11,9 @@ class File(models.Model):
     problems installing pillow, use a more generic FileField instead.
 
     """
-    file = models.FileField(upload_to="uploaded_files")
-    slug = models.SlugField(max_length=50, blank=True)
+    file = models.FileField(upload_to=upload_dir_path)
+    slug = models.SlugField(max_length=50, blank=True )
+    username = models.CharField(max_length=50)
 
     def __unicode__(self):
         return self.file.name

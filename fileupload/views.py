@@ -25,6 +25,8 @@ def login_view(request):
        
     return redirect('/upload/jquery-ui/')
 
+
+
 class FileCreateView(CreateView):
     model = File
 
@@ -74,5 +76,10 @@ class FileListView(ListView):
         files = [ serialize(p) for p in self.get_queryset() ]
         data = {'files': files}
         response = JSONResponse(data, mimetype=response_mimetype(self.request))
+
+        f = open('listtest', 'w')
+        f.write(str(response))
+        f.close()
+
         response['Content-Disposition'] = 'inline; filename=files.json'
         return response
