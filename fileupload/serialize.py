@@ -18,9 +18,9 @@ def order_name(name):
 
 
 def serialize(instance, file_attr='file'):
-    """serialize -- Serialize a Picture instance into a dict.
+    """serialize -- Serialize a File instance into a dict.
 
-    instance -- Picture instance
+    instance -- File instance
     file_attr -- attribute name that contains the FileField or ImageField
 
     """
@@ -28,7 +28,8 @@ def serialize(instance, file_attr='file'):
     return {
         'url': obj.url,
         'name': order_name(obj.name),
-        'type': mimetypes.guess_type(obj.path)[0] or 'image/png',
+        #'type': mimetypes.guess_type(obj.path)[0] or 'image/png',
+        'type': mimetypes.guess_type(obj.path)[0],
         'thumbnailUrl': obj.url,
         'size': obj.size,
         'deleteUrl': reverse('upload-delete', args=[instance.pk]),
