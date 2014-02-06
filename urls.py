@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'upload.views.home', name='home'),
 
-    url(r'^$', lambda x: HttpResponseRedirect('/upload/new/')),
+    url(r'^$', lambda x: HttpResponseRedirect('/upload/jquery-ui/')),
     url(r'^upload/', include('fileupload.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
