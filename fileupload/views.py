@@ -72,6 +72,9 @@ class FileDeleteView(DeleteView):
 class FileListView(ListView):
     model = File
 
+    def get_queryset(self):
+        return File.objects.filter(username=self.request.user)
+
     def render_to_response(self, context, **response_kwargs):
         files = [ serialize(p) for p in self.get_queryset() ]
         data = {'files': files}
