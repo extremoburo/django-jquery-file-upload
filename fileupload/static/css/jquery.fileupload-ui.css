@@ -35,6 +35,16 @@
   background: url(../img/progressbar.gif) !important;
   filter: none;
 }
+
+/*
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_highlight-soft_35_222222_1x100.png") repeat-x scroll 50% 50% #222222;
+    border: 1px solid #444444;
+    color: #EEEEEE;
+    font-weight: normal;
+}
+*/
+
 .fileupload-loading {
   float: right;
   width: 32px;

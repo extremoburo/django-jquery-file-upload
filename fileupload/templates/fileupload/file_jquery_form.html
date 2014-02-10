@@ -48,7 +48,8 @@
 {% block contents %}
 {% if user.is_authenticated %}
     <div class="starter-template">
-
+        
+        <div class="logo"><img src="{{ STATIC_URL }}img/MD_logo.png"></img></div>
 	<ul class="navigation">
 	    <li><a href="../logout/">Logout</a></li>
 	</ul>
@@ -150,18 +151,8 @@
     <tr class="template-download fade" style="display:none">
         <td>
             <span class="preview">
-                {% if (file.thumbnailUrl) { %}
                     <p>{%=file.name%}</p>
-                {% } %}
             </span>
-        </td>
-        <td>
-            <!-- <p class="name">
-                      <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" >{%=file.name%}</a>
-            </p> -->
-            {% if (file.error) { %}
-                <div><span class="error">Error</span> {%=file.error%}</div>
-            {% } %}
         </td>
         <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
