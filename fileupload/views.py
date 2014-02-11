@@ -12,7 +12,7 @@ from django.shortcuts import redirect
 
 def logout_view(request):
     logout(request)
-    return redirect('/upload/jquery-ui/')
+    return redirect('home')
 
 def login_view(request):
 
@@ -23,7 +23,7 @@ def login_view(request):
         if user.is_active:
             login(request, user)
        
-    return redirect('/upload/jquery-ui/')
+    return redirect('home')
 
 
 
