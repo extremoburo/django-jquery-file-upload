@@ -48,8 +48,13 @@
 {% block contents %}
 {% if user.is_authenticated %}
     <div class="starter-template">
+        <table class="mdtitle">
+        <tr>
+        <td><div class="mdtitle"><h2>Molecular Discovery Secure File Upload.</h2></div></td>
+        <td><img src="{{ STATIC_URL }}img/MD_logo.png"></img></td>
+        </tr>
+        </table>
         
-        <div class="logo"><img src="{{ STATIC_URL }}img/MD_logo.png"></img></div>
 	<ul class="navigation">
 	    <li><a href="../logout/">Logout</a></li>
 	</ul>
@@ -82,6 +87,12 @@
 		</div>
 	    </div>
 	    <!-- The table listing the files available for upload/download -->
+            <table>
+            <tr>
+                <span><td><p style="color: red;">File:</p></td></span>
+                <span><td><p style="color: red;">Size:</p></td></span>
+            </tr>
+            </table>
 	    <table role="presentation"><tbody class="files"></tbody></table>
 	</form>
 
@@ -111,7 +122,6 @@
 {% endif %}
 {% endblock %}
 
-
 <br>
 
 {% verbatim %}
@@ -119,9 +129,9 @@
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-upload fade" style="display:none">
-        <td>
+        <!-- <td>
             <span class="preview"></span>
-        </td>
+        </td> -->
         <td>
             <p class="name">{%=file.name%}</p>
             {% if (file.error) { %}
@@ -145,6 +155,11 @@
     </tr>
 {% } %}
 </script>
+{% endverbatim %}
+
+{% if perms.fileupload %}
+
+{% verbatim %}
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -157,14 +172,38 @@
         <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
         </td>
-        <td>
-            <button class="delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>Delete</button>
+        <td id="hideme">
+            <button class="delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>Delete</button> 
             <input type="checkbox" name="delete" value="1" class="toggle">
         </td>
     </tr>
 {% } %}
 </script>
 {% endverbatim %}
+
+{% else %}
+
+{% verbatim %}
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade" style="display:none">
+        <td>
+            <span class="preview">
+                    <p>{%=file.name%}</p>
+            </span>
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+    </tr>
+{% } %}
+</script>
+{% endverbatim %}
+
+
+{% endif %} 
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->

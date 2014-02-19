@@ -16,9 +16,10 @@ body {
   padding: 1em;
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, sans-serif;
   font-size: 10pt;
+  font-weight: bold;
   line-height: 0em;
   background: #E2E2E2;
-  color: #111;
+  color: #333333;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -43,9 +44,16 @@ table {
   margin: 10px 0;
 }
 
-.logo img{
-  margin-left : 50%;
+
+.mdtitle h2{
+  font-size: 17px;
 }
+
+.mdtitle table{
+  padding: 2px;
+}
+
+
 
 .fileupload-progress {
 	margin: 10px 0;
