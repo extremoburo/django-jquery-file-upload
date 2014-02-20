@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta charset="utf-8">
+    <title>Molecular Discovery Ltd.</title>
+    <meta name="description" content="Molecular Discovery Ltd.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- Generic page styles -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.fileupload-ui.css">
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.fileupload-ui-noscript.css"></noscript>
+    
+    <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-fixed-top .navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://github.com/sigurdga/django-jquery-file-upload">Back</a>
+        </div>
+    </div>
+</div>
+
+{% block content %}
+{% for directory in list %}
+   <ul>
+      <li><button class="filesbutton" value="{{ directory }}">{{ directory }}</button>
+      <ul id="{{ directory }}"></ul>
+      </li>
+   </ul>
+
+{% endfor %}
+{% endblock %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+var $j = jQuery.noConflict();
+
+$j(document).ready(function(){
+  $j("button.filesbutton").click(function(){
+
+    var id = $j(this).attr("value");
+
+    if  (! $j("#"+id).is(':empty')){
+       $j("#"+id).empty();
+    }
+    else{
+
+
+    $j.get("./view/?container=" + id,function(o,status){
+      var filelist_html = '';
+      for (var i=0, file; file=o.files[i]; i++){
+          filelist_html += '<li>'+file.name+'</li>';
+      }
+      $j("#"+id).empty().append(filelist_html);
+
+
+      //alert("Data: " + file + "\nStatus: " + status);
+    }); }
+  });
+});
+</script>
+
+</body>
+</html>
+

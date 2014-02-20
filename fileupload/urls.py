@@ -9,10 +9,6 @@ from fileupload.views import (
         )
 
 urlpatterns = patterns('',
-    #url(r'^basic/$', BasicVersionCreateView.as_view(), name='upload-basic'),
-    #url(r'^basic/plus/$', BasicPlusVersionCreateView.as_view(), name='upload-basic-plus'),
-    #url(r'^new/$', FileCreateView.as_view(), name='upload-new'),
-    #url(r'^angular/$', AngularVersionCreateView.as_view(), name='upload-angular'),
     url(r'^login/$', login_view, name='login'),
     url(r'^logout/$', logout_view, name='logout'),
     url(r'^jquery-ui/$', jQueryVersionCreateView.as_view(), name='upload-jquery'),

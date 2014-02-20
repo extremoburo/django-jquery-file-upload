@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^$', lambda x: HttpResponseRedirect('upload/jquery-ui/'), name='home'),
     url(r'^upload/', include('fileupload.urls')),
+    url(r'^download/', include('filedownload.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
