@@ -17,3 +17,7 @@ body {
 .preview img {
     max-height:50px;
 }
+
+.filesbutton b:hover {
+    cursor: pointer;
+}

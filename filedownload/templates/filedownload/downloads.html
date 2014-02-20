@@ -30,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://github.com/sigurdga/django-jquery-file-upload">Back</a>
+            <a class="navbar-brand" href="https://github.com/sigurdga/django-jquery-file-upload">Home</a>
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@
 {% block content %}
 {% for directory in list %}
    <ul>
-      <li><button class="filesbutton" value="{{ directory }}">{{ directory }}</button>
+      <li class="filesbutton" value="{{ directory }}"><b>{{ directory }}</b>
       <ul id="{{ directory }}"></ul>
       </li>
    </ul>
@@ -48,10 +48,11 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
+
 var $j = jQuery.noConflict();
 
 $j(document).ready(function(){
-  $j("button.filesbutton").click(function(){
+  $j("li.filesbutton").click(function(){
 
     var id = $j(this).attr("value");
 
@@ -64,7 +65,7 @@ $j(document).ready(function(){
     $j.get("./view/?container=" + id,function(o,status){
       var filelist_html = '';
       for (var i=0, file; file=o.files[i]; i++){
-          filelist_html += '<li>'+file.name+'</li>';
+          filelist_html += '<li><a href="/media/uploaded_files/' + id + '/'+ file.name+'">'+file.name+'</a></li>';
       }
       $j("#"+id).empty().append(filelist_html);
 
