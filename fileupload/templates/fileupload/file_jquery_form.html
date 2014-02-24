@@ -87,12 +87,12 @@
 		</div>
 	    </div>
 	    <!-- The table listing the files available for upload/download -->
-            <table style="width: 100%;">
+            <!-- <table style="width: 100%;">
             <tr>
                 <span><td><p style="color: red;">File:</p></td></span>
                 <span><td><p style="color: red;">Size:</p></td></span>
             </tr>
-            </table>
+            </table> -->
 	    <table role="presentation"><tbody class="files"></tbody></table>
 	</form>
 
@@ -100,8 +100,8 @@
 
     </div>
 {% else %}
-    <div class="starter-template">
-        <h1>Molecular Discovery Secure Upload Login.</h1>
+    <div class="starter-template" style="margin-left:20%;">
+        <h2><p style="color: red;">Molecular Discovery Secure Upload Login.</p></h2>
         <p class="lead">
             Please use the login credential that our staff provided you:<br>
         </p>
@@ -109,11 +109,11 @@
             {% csrf_token %}
             <div class="form-group">
                 <label class="sr-only" for="exampleInputEmail2">Username</label>
-                <input id="id_username" class="form-control" maxlength="254" name="username" type="text" placeholder="">
+                <input id="id_username" class="form-control" maxlength="100" size="15" name="username" type="text" placeholder="">
             </div>
             <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                <input id="id_password" class="form-control" maxlength="4096" name="password" type="password" placeholder="">
+                <label class="sr-only" for="exampleInputPassword2">Password&nbsp;</label>
+                <input id="id_password" class="form-control" maxlength="50" size="15" name="password" type="password" placeholder="">
             </div><p>
             <button type="submit" class="btn btn-default">Log in</button>
         </form>
@@ -128,9 +128,6 @@
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-upload fade" style="display:none">
-        <!-- <td>
-            <span class="preview"></span>
-        </td> -->
         <td>
             <p class="name">{%=file.name%}</p>
             {% if (file.error) { %}
@@ -161,8 +158,16 @@
 {% verbatim %}
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
+
+    {% if (o.files.length>1) { %}<tr class="template-download fade" style="display:none">
+       <span><td><p style="color: red;">File:</p></td></span>
+       <span><td><p style="color: red;">Size:</p></td></span>
+       <span><td><p style="color: red;">Action:</p></td></span>
+    </tr>
+    {% } %}`
+
 {% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-download fade" style="display:none">
+{   <tr class="template-download fade" style="display:none">
         <td>
             <span class="preview">
                     <p>{%=file.name%}</p>
