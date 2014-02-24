@@ -11,7 +11,7 @@ from fileupload.views import (
 urlpatterns = patterns('',
     url(r'^login/$', login_view, name='login'),
     url(r'^logout/$', logout_view, name='logout'),
-    url(r'^jquery-ui/$', jQueryVersionCreateView.as_view(), name='upload-jquery'),
+    url(r'^home/$', jQueryVersionCreateView.as_view(), name='upload-jquery'),
     url(r'^delete/(?P<pk>\d+)$', FileDeleteView.as_view(), name='upload-delete'),
     url(r'^view/$', FileListView.as_view(), name='upload-view'),
 )
