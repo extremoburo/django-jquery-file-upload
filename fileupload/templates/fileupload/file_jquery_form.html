@@ -71,9 +71,15 @@
 			<input type="file" name="file" multiple>
 		    </span>
 		    <button type="submit" class="start">Start upload</button>
+
+                    {% if perms.fileupload %}
+
 		    <button type="reset" class="cancel">Cancel upload</button>
 		    <button type="button" class="delete">Delete</button>
 		    <input type="checkbox" class="toggle">
+
+                    {% endif %}
+
 		    <input type="hidden" name="username" value="{{ user }}">
 		    <!-- The loading indicator is shown during file processing -->
 		    <span class="fileupload-loading"></span>
