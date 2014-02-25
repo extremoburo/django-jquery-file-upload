@@ -2,8 +2,7 @@
 from django.conf.urls import patterns, url
 
 from fileupload.views import (
-        BasicVersionCreateView, BasicPlusVersionCreateView,
-        jQueryVersionCreateView, AngularVersionCreateView,
+        jQueryVersionCreateView,
         FileCreateView, FileDeleteView, FileListView,
         login_view, logout_view,
         )

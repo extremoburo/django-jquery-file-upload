@@ -42,17 +42,6 @@ class FileCreateView(CreateView):
         data = json.dumps(form.errors)
         return HttpResponse(content=data, status=400, content_type='application/json')
 
-class BasicVersionCreateView(FileCreateView):
-    template_name_suffix = '_basic_form'
-
-
-class BasicPlusVersionCreateView(FileCreateView):
-    template_name_suffix = '_basicplus_form'
-
-
-class AngularVersionCreateView(FileCreateView):
-    template_name_suffix = '_angular_form'
-
 
 class jQueryVersionCreateView(FileCreateView):
     template_name_suffix = '_jquery_form'
