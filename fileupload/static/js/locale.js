@@ -15,7 +15,7 @@ window.locale = {
     "fileupload": {
         "errors": {
             "maxFileSize": "File is too big",
-            "minFileSize": "File is too small",
+            "minFileSize": "File is too small, minumum size is 5MB.",
             "acceptFileTypes": "Filetype not allowed",
             "maxNumberOfFiles": "Max number of files exceeded",
             "uploadedBytes": "Uploaded bytes exceed file size",
