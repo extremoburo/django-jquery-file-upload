@@ -56,6 +56,9 @@ class FileCreateView(CreateView):
     model = File
 
     def form_valid(self, form):
+        if not self.request.user.is_authenticated():
+            return redirect('home')
+
         self.object = form.save()
         files = [serialize(self.object)]
         data = {'files': files}
@@ -77,6 +80,9 @@ class FileDeleteView(DeleteView):
     model = File
 
     def delete(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated():
+           return redirect('home')
+
         self.object = self.get_object()
         self.object.delete()
         response = JSONResponse(True, mimetype=response_mimetype(request))
@@ -91,6 +97,10 @@ class FileListView(ListView):
         return File.objects.filter(username=self.request.user)
 
     def render_to_response(self, context, **response_kwargs):
+
+        if not self.request.user.is_authenticated():
+            return redirect('home')
+
         files = [ serialize(p) for p in self.get_queryset() ]
         data = {'files': files}
         response = JSONResponse(data, mimetype=response_mimetype(self.request))
