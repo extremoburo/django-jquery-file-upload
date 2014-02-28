@@ -22,6 +22,7 @@ def send_email(response,user):
 
     for file in response['files']:
         msg_content += "File Uploaded: "+ file['name'] + '\r\n' 
+        msg_content += "File Size: "+ str(file['size']) + ' bytes\r\n' 
         msg_content += "Download: https://ml.moldiscovery.com:8888/uploader"+ file['url'] + '\r\n\r\n' 
    
     msg = ("From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n"
