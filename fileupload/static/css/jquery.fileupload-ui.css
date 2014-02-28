@@ -50,8 +50,16 @@
     height: 14px;
     margin-bottom: 10px;
     width: 80%;
-    background: #000000 url(../img/progessbar.gif) 50% 50% repeat;
+    background: #000000 url(../img/progressbar.gif) 50% 50% repeat;
     color: #ffffff;
+}
+
+.ui-widget-header {
+border: 1px solid #005491;
+/*background: #388532 url(images/ui-bg_highlight-soft_44_444444_1x100.png) 50% 50% repeat-x;*/
+background: #005491 url(../img/ui-bg_highlight-soft_44_444444_1x100.png) 50% 50% repeat-x;
+color: #ffffff;
+font-weight: bold;
 }
 
 .ui-widget {
