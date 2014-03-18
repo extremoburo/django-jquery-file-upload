@@ -32,8 +32,15 @@ def make_download(modeladmin, request, queryset):
     
 make_download.short_description = "Download selected files"
 
+def file_size(obj):
+    if obj.file.size < 1000000:
+        return ("%s bytes" % (obj.file.size))
+    return ("%s MBs" % (obj.file.size/1000000))
+file_size.short_description = 'Size'
 
 class FileAdmin(admin.ModelAdmin):
+    list_display = ('slug','username', file_size)
+    ordering = ('username','slug')
     actions = [make_download]
    
 
