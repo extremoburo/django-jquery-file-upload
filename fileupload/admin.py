@@ -15,21 +15,29 @@ def validate_size(files, maxsize):
     return True
     
 def make_download(modeladmin, request, queryset):
-    response = HttpResponse(mimetype='application/x-gzip')
-    response['Content-Disposition'] = 'attachment; filename=MD_secure_upload_download.tar.gz'
-    tarred = tarfile.open(fileobj=response, mode='w:gz')
 
-    
-    if not validate_size(queryset,500000000):
-        messages.warning(request, "Download group is too big, unselect some files or select just 1, max size of multple download: 500 MB")
+    try:
+        response = HttpResponse(mimetype='application/x-gzip')
+        response['Content-Disposition'] = 'attachment; filename=MD_secure_upload_download.tar.gz'
+        tarred = tarfile.open(fileobj=response, mode='w:gz')
 
-    else:
+
+        if not validate_size(queryset,500000000):
+            messages.warning(request, "Download group is too big, unselect some files or select just 1, max size of multple download: 500 MB")
+
+        else:
+
+            for file in queryset:
+                tarred.add(settings.MEDIA_ROOT+file.file.name, arcname=file.file.name )
+            tarred.close()
+
+            return response
+
+    except tarfile.TarError:
+            messages.error(request, "Error while creating the TAR archive, contact the webmaster.")
+    except :
+            messages.error(request, "There was an error, please contact the webmaster")
         
-        for file in queryset:
-            tarred.add(settings.MEDIA_ROOT+file.file.name, arcname=file.file.name )
-        tarred.close()
-
-        return response
     
 make_download.short_description = "Download selected files"
 
