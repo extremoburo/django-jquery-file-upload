@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 import tarfile
 from django.contrib import messages
+from django.conf import settings
 
 def validate_size(files, maxsize):
     total_size = 0
@@ -25,7 +26,7 @@ def make_download(modeladmin, request, queryset):
     else:
         
         for file in queryset:
-            tarred.add("media/"+file.file.name)
+            tarred.add(settings.MEDIA_ROOT+file.file.name, arcname=file.file.name )
         tarred.close()
 
         return response
