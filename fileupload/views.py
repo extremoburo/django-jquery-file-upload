@@ -65,7 +65,7 @@ class FileCreateView(CreateView):
         data = {'files': files}
         response = JSONResponse(data, mimetype=response_mimetype(self.request))
         response['Content-Disposition'] = 'inline; filename=files.json'
-        send_email(data, self.request.user.username)
+        #send_email(data, self.request.user.username)
         return response
 
     def form_invalid(self, form):

@@ -1,12 +1,16 @@
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['ml.moldiscovery.com','fileserver.lan','ajax.googleapis.com']
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
+SERVER_EMAIL = 'admin@ml.moldiscovery.com'
+
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('SysAdmin', 'fabrizio@moldiscovery.com'),
 )
 
 MANAGERS = ADMINS

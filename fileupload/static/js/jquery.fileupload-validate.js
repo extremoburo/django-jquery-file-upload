@@ -71,7 +71,7 @@
                 maxNumberOfFiles: 'Maximum number of files exceeded',
                 acceptFileTypes: 'File type not allowed',
                 maxFileSize: 'File is too large',
-                minFileSize: 'File is too small, min allowed size is 5MB.'
+                minFileSize: 'File is too small, min allowed size is 0.1MB.'
             }
         },
 

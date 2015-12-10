@@ -49,6 +49,7 @@ file_size.short_description = 'Size'
 
 class FileAdmin(admin.ModelAdmin):
     list_display = ('slug','username', file_size)
+    search_fields = ['slug', 'username']
     ordering = ('username','slug')
     actions = [make_download]
    

@@ -18,7 +18,7 @@ $(function () {
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
 
-        minFileSize: 5000000,
+        minFileSize: 100000,
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         //url: 'server/php/'
@@ -40,7 +40,7 @@ $(function () {
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         //url: $('#fileupload').fileupload('option', 'url'),
-        url: '/upload/view/',
+        url: 'https://ml.moldiscovery.com:8888/uploader/upload/view/',
         dataType: 'json',
         context: $('#fileupload')[0]
     }).always(function () {
