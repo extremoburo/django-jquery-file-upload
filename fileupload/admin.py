@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import tarfile
 from django.contrib import messages
 from django.conf import settings
+import os.path, time
 
 def validate_size(files, maxsize):
     total_size = 0
@@ -47,8 +48,12 @@ def file_size(obj):
     return ("%s MBs" % (obj.file.size/1000000))
 file_size.short_description = 'Size'
 
+def last_modified(obj):
+    date_text = "%s" % time.ctime(os.path.getmtime(settings.MEDIA_ROOT+obj.file.name))  
+    return date_text    
+
 class FileAdmin(admin.ModelAdmin):
-    list_display = ('slug','username', file_size)
+    list_display = ('slug','username', file_size, last_modified)
     search_fields = ['slug', 'username']
     ordering = ('username','slug')
     actions = [make_download]
