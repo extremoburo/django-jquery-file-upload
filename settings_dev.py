@@ -1,16 +1,15 @@
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['ml.moldiscovery.com','fileserver.lan','ajax.googleapis.com']
+# uncomment this on production server and DEBUG=False
+#ALLOWED_HOSTS = ['ml.moldiscovery.com','ajax.googleapis.com']
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
-SERVER_EMAIL = 'admin@ml.moldiscovery.com'
-
 ADMINS = (
-     ('SysAdmin', 'fabrizio@moldiscovery.com'),
+    ('Fabrizio Buratta', 'fabrizio@moldiscovery.com'),
 )
 
 MANAGERS = ADMINS
@@ -53,12 +52,12 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.abspath(os.path.dirname(__file__)) + '/media/'
 
+ARCHIVE_ROOT = os.path.join(MEDIA_ROOT,'archived')
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
-
-ARCHIVE_ROOT = os.path.join(MEDIA_ROOT,'archived')
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
