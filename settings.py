@@ -3,11 +3,11 @@ import os
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['ml.moldiscovery.com','fileserver.lan','ajax.googleapis.com']
+ALLOWED_HOSTS = ['www2.moldiscovery.com','localhost','127.0.0.1','ajax.googleapis.com']
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
-SERVER_EMAIL = 'admin@ml.moldiscovery.com'
+SERVER_EMAIL = 'admin@www2.moldiscovery.com'
 
 ADMINS = (
      ('SysAdmin', 'fabrizio@moldiscovery.com'),
@@ -51,7 +51,8 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.abspath(os.path.dirname(__file__)) + '/media/'
+#MEDIA_ROOT = os.path.abspath(os.path.dirname(__file__)) + '/media/'
+MEDIA_ROOT = '/var/media-storage/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
