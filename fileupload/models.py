@@ -1,5 +1,10 @@
 # encoding: utf-8
 from django.db import models
+# Receive the pre_delete signal and delete the file associated with the model instance.
+from django.db.models.signals import post_delete
+from django.dispatch.dispatcher import receiver
+
+
 
 def upload_dir_path(instance, filename):
     return 'uploaded_files/%s/%s' % (instance.username, filename)
@@ -26,7 +31,13 @@ class File(models.Model):
         self.slug = self.file.name
         super(File, self).save(*args, **kwargs)
 
-    def delete(self, *args, **kwargs):
-        """delete -- Remove to leave file."""
-        self.file.delete(False)
-        super(File, self).delete(*args, **kwargs)
+    # use post_delete signal instead
+    #def delete(self, *args, **kwargs):
+    #    """delete -- Remove to leave file."""
+    #    self.file.delete(False)
+    #    super(File, self).delete(*args, **kwargs)
+
+@receiver(post_delete, sender=File)
+def File_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.file.delete(False)
