@@ -13,7 +13,7 @@ import smtplib
 
 def send_email(response,user):
 
-    FROMADDR = "uploads@ml.moldiscovery.com"
+    FROMADDR = "uploads@www2.moldiscovery.com"
     LOGIN    = FROMADDR
     #PASSWORD = ""
     TOADDRS  = ["fabrizio@moldiscovery.com"]
@@ -23,7 +23,7 @@ def send_email(response,user):
     for file in response['files']:
         msg_content += "File Uploaded: "+ file['name'] + '\r\n' 
         msg_content += "File Size: "+ str(file['size']) + ' bytes\r\n' 
-        msg_content += "Download: https://ml.moldiscovery.com:8888/uploader"+ file['url'] + '\r\n\r\n' 
+        msg_content += "Download: https://www2.moldiscovery.com/secureupload/admin/" + '\r\n\r\n' 
    
     msg = ("From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n"
            % (FROMADDR, ", ".join(TOADDRS), SUBJECT) )
@@ -31,7 +31,7 @@ def send_email(response,user):
 
     server = smtplib.SMTP('localhost', 25)
     #server.set_debuglevel(1)
-    server.ehlo("ml.moldiscovery.com")
+    server.ehlo("www2.moldiscovery.com")
     #server.starttls()
     #server.login(LOGIN, PASSWORD)
     server.sendmail(FROMADDR, TOADDRS, msg)

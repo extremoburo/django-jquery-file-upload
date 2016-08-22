@@ -80,14 +80,14 @@ font-weight: bold;
     border-top-left-radius: 6px;
 }
 
-/*.fileupload-loading {
+.fileupload-loading {
   float: right;
   width: 32px;
   height: 32px;
   background: url(../img/loading.gif) center no-repeat;
   background-size: contain;
   display: none;
-}*/
+}
 
 .fileupload-processing .fileupload-loading {
   display: block;

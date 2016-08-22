@@ -24,8 +24,8 @@ def make_download(modeladmin, request, queryset):
         tarred = tarfile.open(fileobj=response, mode='w:gz')
 
 
-        if not validate_size(queryset,500000000):
-            messages.warning(request, "Download group is too big, unselect some files or select just 1, max size of multple download: 500 MB")
+        if not validate_size(queryset,1000000000):
+            messages.warning(request, "Download group is too big, unselect some files or select just 1, max size of multple download: 1.0 GB")
 
         else:
 

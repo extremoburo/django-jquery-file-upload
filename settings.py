@@ -3,7 +3,7 @@ import os
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['www2.moldiscovery.com','localhost','127.0.0.1','ajax.googleapis.com']
+ALLOWED_HOSTS = ['upload.moldiscovery.com','www2.moldiscovery.com','localhost','127.0.0.1','ajax.googleapis.com']
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 

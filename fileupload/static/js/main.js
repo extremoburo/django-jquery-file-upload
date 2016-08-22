@@ -40,7 +40,7 @@ $(function () {
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         //url: $('#fileupload').fileupload('option', 'url'),
-        url: 'https://ml.moldiscovery.com:8888/uploader/upload/view/',
+        url: 'https://upload.moldiscovery.com/secureupload/upload/view/',
         dataType: 'json',
         context: $('#fileupload')[0]
     }).always(function () {
